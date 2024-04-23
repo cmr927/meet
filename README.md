@@ -37,7 +37,7 @@ Meet is a serverless, progressive web application (PWA) built with React using a
 - Feature 2; Scenario 3: User can collapse an event to hide details.
   - **Given** user clicked on “show details” of an event;
   - **When** details are displayed and user clicks on “hide details”;
-  - **Then** user could collapse the whole event to hide the details and the event details should collapse.
+  - **Then** the event details should collapse.
 - Feature 3; Scenario 1: When user hasn’t specified a number, 32 events are shown by default.
   - **Given** the user is on the events app;
   - **When** the user doesn’t specity a number of events;
