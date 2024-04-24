@@ -63,16 +63,8 @@ Meet is a serverless, progressive web application (PWA) built with React using a
   - **When** user clicks, “show data” button;
   - **Then** show a chart with the number of upcoming events in each city.
 
-
-
-
-
-
- 
-
-
-
 ## Link to Project
+cmr927.github.io/meet
 
 ## Installation
 
