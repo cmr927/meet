@@ -1,7 +1,7 @@
 # Meet 
 
 ## Description
-Meet is a serverless, progressive web application (PWA) built with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
+Meet is a serverless, progressive web application (PWA) built with React using a test-driven development (TDD) technique. The front-end is written with JavaScript/React. The server logic is written with Node/Express as Lambda functions (FaaS) and is hosted on AWS. The serverless functions connect to the Google Calendar API.
 
 ## Features
 - Feature 1: Filter Events By City
