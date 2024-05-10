@@ -5,7 +5,7 @@ describe('<EventList /> component', () => {
     let EventListComponent;
     beforeEach(() => {
         EventListComponent = render(<EventList />);
-    })
+    });
 
     test('has an element with "list" role', () => {
         expect(EventListComponent.queryByRole("list")).toBeInTheDocument();
