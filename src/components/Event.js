@@ -1,4 +1,4 @@
-const Event = () => {
+const Event = ({ event }) => {
     return (
         <li></li>
     );
