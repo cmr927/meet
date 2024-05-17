@@ -12,7 +12,7 @@ const Event = ({ event }) => {
             <p>Start Time: {event.created}</p>
             <p>Location: {event.location}</p>
             <button onClick={toggleDetails}>
-                {showDetails ? 'Hide Details' : 'Show Details'}
+                {showDetails ? 'hide details' : 'show details'}
             </button>
             <div hidden={!showDetails} data-testid="event-details">
                 {/* Render event details here */}

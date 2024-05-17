@@ -3,9 +3,13 @@ import Event from './Event';
 const EventList = ({ events }) => {
     return (
         <ul id="event-list">
-            {events ?
-                events.map(event => <Event key={event.id} event={event} />) :
-                null}
+            {
+                events ?
+                    events.map(event =>
+                        <li key={event.id}> <Event key={event.id} event={event} /> </li>
+                    ) :
+                    null
+            }
         </ul>
     );
 }
