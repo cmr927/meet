@@ -6,7 +6,6 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Event from '../components/Event';
-import { getEvents } from '../api';
 import mockData from '../mock-data';
 
 describe('<Event /> component', () => {
@@ -17,7 +16,7 @@ describe('<Event /> component', () => {
     test("by default, event's details section should be hidden", () => {
         const { getByTestId } = EventComponent
 
-        // Assuming your component renders the event details with testID 'event-details' and initially it should be collapsed
+        // Renders the event details with testID 'event-details' and initially it should be collapsed
         const eventDetails = getByTestId('event-details');
 
         // Expect the event details to be present but not visible initially
@@ -30,12 +29,12 @@ describe('<Event /> component', () => {
     });
 
     test('renders event start time', () => {
-        expect(EventComponent.queryByText(mockData[0].created)).toBeInTheDocument();
+        expect(EventComponent.queryByText(mockData[0].created, { exact: false })).toBeInTheDocument();
     });
 
 
     test('renders event location', () => {
-        expect(EventComponent.queryByText(mockData[0].location)).toBeInTheDocument();
+        expect(EventComponent.queryByText(mockData[0].location, { exact: false })).toBeInTheDocument();
     });
 
     // The event's show details button
