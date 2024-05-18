@@ -1,3 +1,5 @@
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/no-render-in-setup */
 import { render } from '@testing-library/react';
 import App from '../App';
 
@@ -14,4 +16,8 @@ describe('<App /> component', () => {
     test('render CitySearch', () => {
         expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
     });
-});
+
+    test('render NumberOfEvents', () => {
+        expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
+    });
+})
