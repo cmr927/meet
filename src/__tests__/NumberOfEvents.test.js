@@ -37,4 +37,10 @@ describe('<NumberOfEvents /> component', () => {
         // Expect the number of events to be equal to the user-specified number (10 in this case)
         expect(eventNumberInput).toHaveValue(10);
     });
+
+    test('contains an element with the role of textbox', () => {
+        const { getByRole } = NumberOfEventsComponent;
+        const textbox = getByRole('textbox');
+        expect(textbox).toBeInTheDocument();
+    });
 });
