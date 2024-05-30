@@ -5,6 +5,7 @@ import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getEvents } from '../api';
 import App from '../App';
+import NumberOfEvents from '../components/NumberOfEvents.js';
 
 describe('<App /> component', () => {
     let AppDOM;
@@ -51,4 +52,5 @@ describe('<App /> integration', () => {
             expect(event.textContent).toContain("Berlin, Germany");
         });
     });
+
 });

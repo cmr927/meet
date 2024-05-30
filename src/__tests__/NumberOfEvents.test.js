@@ -1,8 +1,12 @@
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/render-result-naming-convention */
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/prefer-screen-queries */
-import { render } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents.js';
+import { extractLocations, getEvents } from '../api';
+import App from "../App";
 
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
@@ -18,7 +22,6 @@ describe('<NumberOfEvents /> component', () => {
     });
 
     test("default number in text box is 32", () => {
-        // Assuming you have a text input field for the user to specify the number of events with testID 'event-number-input'
         const eventNumberInput = getByTestId('event-number-input');
 
         // Expect the default value of the input field to be '32'
@@ -27,7 +30,6 @@ describe('<NumberOfEvents /> component', () => {
 
 
     test('should allow the user to change the number of events displayed', async () => {
-        // Assuming you have an input field for the user to specify the number of events with testID 'event-number-input'
         const eventNumberInput = getByTestId('event-number-input');
 
         // Simulate user input to change the number of events to be displayed
@@ -44,3 +46,21 @@ describe('<NumberOfEvents /> component', () => {
         expect(textbox).toBeInTheDocument();
     });
 });
+
+describe('<NumberOfEvents /> integration', () => {
+    test('user can change the number of events displayed', async () => {
+        const AppComponent = render(<App />);
+        const AppDOM = AppComponent.container.firstChild;
+        const EventListDOM = AppDOM.querySelector('#event-list');
+        const NumberOfEventsDOM = AppDOM.querySelector('number-of-events');
+        const eventNumberInput = within(NumberOfEventsDOM).getByTestId('event-number-input');
+        const user = userEvent.setup();
+        await user.type(eventNumberInput, '{backspace}{backspace}10');
+        await waitFor(() => {
+            const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+            expect(EventListItems.length).toBe(10);
+        });
+
+    });
+
+})
