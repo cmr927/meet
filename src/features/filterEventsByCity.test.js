@@ -8,7 +8,7 @@ import { getEvents } from '../api';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
-    test('When user hasn\'t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
+    test('When user hasn\'t searched for a city, show upcoming events from all cities', ({ given, when, then }) => {
         given('user hasn\'t searched for any city', () => {
 
         });
@@ -19,7 +19,7 @@ defineFeature(feature, test => {
 
         });
 
-        then('the user should see the list of all upcoming events.', async () => {
+        then('the user should see the list of all upcoming events', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
 
@@ -30,7 +30,7 @@ defineFeature(feature, test => {
         })
     });
 
-    test('User should see a list of suggestions when they search for a city.', ({ given, when, then }) => {
+    test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
 
         let AppComponent;
         given('the main page is open', () => {
@@ -53,7 +53,7 @@ defineFeature(feature, test => {
     });
 
 
-    test('User can select a city from the suggested list.', ({ given, and, when, then }) => {
+    test('User can select a city from the suggested list', ({ given, and, when, then }) => {
 
         let AppComponent;
         let AppDOM;
