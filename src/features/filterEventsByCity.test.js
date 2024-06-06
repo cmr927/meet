@@ -14,12 +14,12 @@ defineFeature(feature, test => {
         });
 
         let AppComponent;
-        when('the user opens the app', () => {
+        when('user opens the app', () => {
             AppComponent = render(<App />);
 
         });
 
-        then('the user should see the list of all upcoming events', async () => {
+        then('user should see the list of all upcoming events', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
 
@@ -27,7 +27,7 @@ defineFeature(feature, test => {
                 const EventListItems = within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems.length).toBe(32);
             });
-        })
+        });
     });
 
     test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
@@ -46,7 +46,7 @@ defineFeature(feature, test => {
             await user.type(citySearchInput, "Berlin");
         });
 
-        then('the user should recieve a list of cities (suggestions) that match what they\'ve typed', async () => {
+        then('user should recieve a list of cities (suggestions) that match what they\'ve typed', async () => {
             const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
             expect(suggestionListItems).toHaveLength(2);
         });
@@ -74,7 +74,7 @@ defineFeature(feature, test => {
             expect(suggestionListItems).toHaveLength(2);
         });
 
-        when('the user selects a city (e.g., “Berlin, Germany”) from the list', async () => {
+        when('user selects a city (e.g., “Berlin, Germany”) from the list', async () => {
             const user = userEvent.setup();
             await user.click(suggestionListItems[0]);
         });
@@ -84,7 +84,7 @@ defineFeature(feature, test => {
 
         });
 
-        and('the user should receive a list of upcoming events in that city', async () => {
+        and('user should receive a list of upcoming events in that city', async () => {
             const EventListDOM = AppDOM.querySelector('#event-list');
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
             const allEvents = await getEvents();

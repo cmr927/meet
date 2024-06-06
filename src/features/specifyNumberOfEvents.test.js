@@ -1,7 +1,9 @@
+/* eslint-disable testing-library/prefer-screen-queries */
+/* eslint-disable testing-library/no-node-access */
 //Fresh from chatGPT. MUST continue editing!
 
 import { loadFeature, defineFeature } from 'jest-cucumber';
-import { render, screen } from '@testing-library/react';
+import { render, within, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
@@ -10,36 +12,56 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 defineFeature(feature, test => {
     test("When user hasn't specified a number, 32 events are shown by default", ({ given, when, then }) => {
 
-        let AppComponent;
-        given('user is on the events app', () => {
-            AppComponent = render(<App />);
+        given('user opens the events app', () => {
+
         });
 
-        when("user doesn't specify a number of events", () => {
-            // Assuming the app loads with events automatically, no action needed here
+        let AppComponent;
+        when('the app loads', () => {
+            AppComponent = render(<App />);
+
         });
 
         then('32 events should be displayed by default', async () => {
-            const eventItems = await screen.findAllByTestId('event-item'); // Assuming each event has a test ID 'event-item'
-            expect(eventItems).toHaveLength(32);
+            const AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector('#event-list');
+
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(EventListItems.length).toBe(32);
+            });
         });
     });
 
     test('User can change the number of events displayed', ({ given, when, then }) => {
+
+        let AppComponent;
+        let AppDOM;
         given('the default 32 events were displayed', async () => {
-            render(<App />);
-            const eventItems = await screen.findAllByTestId('event-item'); // Assuming each event has a test ID 'event-item'
-            expect(eventItems).toHaveLength(32);
+            AppComponent = render(<App />);
+            AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector('#event-list');
+
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(EventListItems.length).toBe(32);
+            });
         });
 
-        when('user changes the default number of events displayed', () => {
-            const numberInput = screen.getByPlaceholderText('Number of events'); // Adjust the placeholder text accordingly
-            userEvent.change(numberInput, { target: { value: '10' } });
+        when('user changes the default number of events displayed', async () => {
+            const NumberOfEventsDOM = (AppDOM).querySelector('#event-number-input');
+            const user = userEvent.setup();
+            await user.type(NumberOfEventsDOM, '{backspace}{backspace}10')
         });
 
         then('the number of events displayed will change', async () => {
-            const eventItems = await screen.findAllByTestId('event-item'); // Assuming each event has a test ID 'event-item'
-            expect(eventItems).toHaveLength(10);
+            AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector('#event-list');
+
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(EventListItems.length).toBe(10);
+            });
         });
     });
 });
