@@ -12,7 +12,8 @@ describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
     let getByTestId;
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents />);
+        NumberOfEventsComponent = render(<NumberOfEvents
+            setErrorAlert={() => { }} />);
         getByTestId = NumberOfEventsComponent.getByTestId
     });
 
