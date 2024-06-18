@@ -22,17 +22,12 @@ export const extractLocations = (events) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-    // NProgress.start();
-    // NProgress.start(); was breaking things so I commented it out
-
     if (window.location.href.startsWith("http://localhost")) {
-        // NProgress.done();
         return mockData;
     }
 
     if (!navigator.onLine) {
         const events = localStorage.getItem("lastEvents");
-        // NProgress.done();
         return events ? JSON.parse(events) : [];
     }
 
@@ -44,7 +39,6 @@ export const getEvents = async () => {
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
-            // NProgress.done();
             localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
         } else return null;
