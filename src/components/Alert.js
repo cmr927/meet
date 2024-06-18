@@ -44,7 +44,7 @@ class ErrorAlert extends Alert {
     constructor(props) {
         super(props);
         this.color = 'rgb(255, 0, 0)'; // red
-        this.bgColor = 'rgb(255, 184, 184)'; // pink, too dark at 255, 156, 156. Must modify!
+        this.bgColor = 'rgb(255, 190, 190)'; // pink
     }
 }
 
@@ -52,7 +52,7 @@ class WarningAlert extends Alert {
     constructor(props) {
         super(props);
         this.color = 'rgb(255, 125, 0)'; // orange
-        this.bgColor = 'rgb(255, 205, 159)'; // light orange
+        this.bgColor = 'rgb(255, 220, 190)'; // light orange
     }
 }
 
