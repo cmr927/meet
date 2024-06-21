@@ -20,7 +20,6 @@ const App = () => {
   const [errorAlert, setErrorAlert] = useState("");
   const [warningAlert, setWarningAlert] = useState("");
 
-
   useEffect(() => {
     if (navigator.onLine) {
       setWarningAlert("")
