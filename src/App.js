@@ -7,6 +7,8 @@ import EventGenresChart from './components/EventGenresChart'
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
 
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';

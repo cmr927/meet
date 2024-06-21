@@ -4,6 +4,8 @@
 
 import { useState } from "react";
 
+import { Container, Col, Row } from "react-bootstrap"
+
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     const [numberInput, setNumberInput] = useState(32);
 
@@ -24,17 +26,25 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     };
 
     return (
-        <div id="number-of-events">
-            <label htmlFor="event-number-input">Number of Events:</label>
-            <input role="textbox"
-                type="number"
-                id="event-number-input"
-                name="eventNumberInput"
-                value={numberInput}
-                onChange={handleInputChange}
-                data-testid="event-number-input"
-            />
-        </div>
+        <Container>
+            <Row id="number-of-events">
+                <Col>
+                    <label htmlFor="event-number-input">Number of Events:</label>
+                </Col>
+                <Col>
+                    <div className="cityDiv">
+                        <input role="textbox"
+                            type="number"
+                            id="event-number-input"
+                            name="eventNumberInput"
+                            value={numberInput}
+                            onChange={handleInputChange}
+                            data-testid="event-number-input"
+                        />
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
+import { Container, Col, Row } from "react-bootstrap"
+
 
 const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -36,27 +38,38 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         setInfoAlert("")
     };
     return (
-        <div id="city-search">
-            <input
-                type="text"
-                className="city"
-                placeholder="Search for a city"
-                value={query}
-                onFocus={() => setShowSuggestions(true)}
-                onChange={handleInputChanged}
-            />
-            {showSuggestions ?
-                <ul className="suggestions">
-                    {suggestions.map((suggestion) => {
-                        return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
-                    })}
-                    <li key='See all cities' onClick={handleItemClicked}>
-                        <b>See all cities</b>
-                    </li>
-                </ul>
-                : null
-            }
-        </div>
+        <Container>
+            <Row id="city-search" className="d-flex">
+                <Col>
+                    <label htmlFor="city-input">Find events from around the world:</label>
+                </Col>
+                <Col>
+                    <div className="cityDiv d-flex">
+                        <input
+                            type="text"
+                            className="city"
+                            placeholder="Search for a city"
+                            value={query}
+                            onFocus={() => setShowSuggestions(true)}
+                            onChange={handleInputChanged}
+                        />
+                        {showSuggestions ?
+
+                            <ul className="suggestions">
+                                {suggestions.map((suggestion) => {
+                                    return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
+                                })}
+                                <li key='See all cities' onClick={handleItemClicked}>
+                                    <b>See all cities</b>
+                                </li>
+                            </ul>
+
+                            : null
+                        }
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 
