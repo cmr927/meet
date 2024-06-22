@@ -1,6 +1,5 @@
 /* eslint-disable testing-library/prefer-screen-queries */
 /* eslint-disable testing-library/no-node-access */
-//Fresh from chatGPT. MUST continue editing!
 
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import { render, within, waitFor, screen } from '@testing-library/react';

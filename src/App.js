@@ -2,8 +2,12 @@
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
+import CityEventsChart from './components/CityEventsChart';
+import EventGenresChart from '.components/EventGenresChart'
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
@@ -17,7 +21,6 @@ const App = () => {
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
   const [warningAlert, setWarningAlert] = useState("");
-
 
   useEffect(() => {
     if (navigator.onLine) {
@@ -39,6 +42,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <h1>Meet App</h1>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
@@ -51,8 +55,13 @@ const App = () => {
       <NumberOfEvents
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
-      <EventList
-        events={events} />
+      <div className="charts-container">
+        <EventGenresChart events={events} />
+        <CityEventsChart
+          allLocations={allLocations}
+          events={events} />
+      </div>
+      <EventList events={events} />
     </div>
   );
 }

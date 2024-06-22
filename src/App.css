@@ -56,20 +56,34 @@ input[type="number"]:focus {
   border-color: var(--primary-color);
 }
 
-#city-search {
+.city-search {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.city-search label {
+  align-self: flex-start;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.cityDiv {
+  max-width: 400px;
   position: relative;
 }
 
 .suggestions {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   position: absolute;
   top: 50px;
   z-index: 2;
-  margin: 0;
+  margin: auto;
   font-size: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -124,4 +138,16 @@ input[type="number"]:focus {
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+.charts-container {
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
 }
