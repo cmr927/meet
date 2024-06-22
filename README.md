@@ -15,31 +15,20 @@ Meet is a serverless, progressive web application (PWA) built with React using a
 cmr927.github.io/meet
 
 ## Installation
-
-## Usage
-
-## Components
+Clone this repository into the meet directory and type ```npm install```
 
 ## Dependencies
-- @testing-library/jest-dom
-- @testing-library/react
-- @testing-library/user-event
+- @testing-library
+- atatus-spa
+- bootstrap
+- dayjs
 - react
+- recharts
 - web-vitals
-- workbox-background-sync
-- workbox-broadcast-update
-- workbox-cacheable-response
-- workbox-core
-- workbox-expiration
-- workbox-google-analytics
-- workbox-navigation-preload
-- workbox-precaching
-- workbox-range-requests
-- workbox-routing
-- workbox-strategies
-- workbox-streams
-
+- workbox
+  
 ## Server-Side (backend) API
+``https://e7f39l4mof.execute-api.us-east-1.amazonaws.com/dev/api/get-events``` connects to the Google Calendar API for the events
 
 ## Authentication
 OAuth2 authentication flow.
