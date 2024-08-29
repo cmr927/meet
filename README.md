@@ -28,7 +28,7 @@ Clone this repository into the meet directory and type ```npm install```
 - workbox
   
 ## Server-Side (backend) API
-``https://e7f39l4mof.execute-api.us-east-1.amazonaws.com/dev/api/get-events``` connects to the Google Calendar API for the events
+https://e7f39l4mof.execute-api.us-east-1.amazonaws.com/dev/api/get-events connects to the Google Calendar API for the events
 
 ## Authentication
 OAuth2 authentication flow.
